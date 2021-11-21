@@ -1,42 +1,29 @@
-.git{
-    background-color: rgb(42, 55, 70);
-    color: white;
-    font-size: 2em;
-}
-#i6{
-    text-align: center;
+#c{
+    border: 2px solid black;
+    width: 6cm;
+    padding: 0.5cm;
 }
 
-#i1{
-    display: flex;
-    width: 100;
-    height: 50vh;
-    background-color: rgb(224, 224, 224);
-   flex : 1;
-    
- }
- #i2{
-     height: 9cm;
-     border-radius: 1rem;
-     background-color: rgb(87, 81, 81);
-     width: 7cm;
- }
- #i3{
-     width: 15cm;
-     height: 10mm;
-     border-radius: 10mm;
-     color: white;
- }
- #i4{
-     background-color: rgb(87, 81, 81);
-     width: 3cm;
-     padding: 2;
-     height: 2cm;
-     border-radius: 1rem;
- }
+#result{
+    margin :auto;
+    margin: 0.2cm auto;
+    text-align: right;
+    height: 1cm;
+    width: 8cm;
+    background-color: rgb(151, 150, 150);
+    color: rgb(235, 235, 235);
+}
 
- #i5{
-     width : 100;
-     background-color: rgb(87, 81, 81);
-     border-radius: 1rem;
- }
+@media screen and (max-width: 992px) {
+    body {
+      background-color: white;
+    }
+  }
+  
+ 
+  @media screen and (max-width: 600px) {
+    body {
+     
+    background-color: white;
+    }
+  }

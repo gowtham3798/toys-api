@@ -6,136 +6,53 @@
       
       <link rel="stylesheet" href="bootstrap.min.css">
     
-      <link rel="stylesheet" href="style2.css">
-      <title>Alert</title>
+      <link rel="stylesheet" href="style.css">
+      <title>Calculator</title>
     </head>
-<body>
-<label for="username"><strong>Name</strong><span style="color: red;">*</span></label>
-<div class="form-row">
-   <div class="form-group col-md-3">
-    <div><input type="text" class="form-control" >
-    <small class="form-text text-muted">First</small></div>
-    </div>
-  
-    <div class="form-group col-md-3 ">
-     <div><input type="text" class="form-control">
-    <small class="form-text text-muted">Last</small></div>
+  <body  style="margin: 0.5cm; padding: 1cm;text-align: center;">
+   <div class="table-responsive-sm">
+    <table class="table table-bordered table-active m-auto" style="width: 10cm;border: 2px solid black;">
+          <thead>
+            <tr>
+              <td colspan="4" ><input class="display-box" id="result" placeholder="0"  disabled /></td>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="text-align: center;">
+              
+              <td><input class="btn" type="button" value="C" style="color: red;" onclick="clearScreen()" /></td>
+              <td><input class="btn" type="button" value="<-"  onclick="back()"/></td>
+              <td><input class="btn" type="button" value="."  onclick="display('.')" /></td>
+              <td><input class="btn" type="button" value="*"  onclick="display('*')" /></td>
+            </tr>
+            <tr style="text-align: center;">
+              <td><input class="btn" type="button" value="7"  onclick="display('7')" /></td>
+              <td><input class="btn" type="button" value="8"  onclick="display('8')" /></td>
+              <td><input class="btn" type="button" value="9"  onclick="display('7')" /></td>
+              <td><input class="btn" type="button" value="/"  onclick="display('/')" /></td>
+            </tr>
+            <tr style="text-align: center;">
+              <td><input class="btn" type="button" value="4"  onclick="display('4')" /></td>
+              <td><input class="btn" type="button" value="5"  onclick="display('5')" /></td>
+              <td><input class="btn" type="button" value="6"  onclick="display('6')" /></td>
+              <td><input class="btn" type="button" value="-"  onclick="display('-')" /></td>
+            </tr>
+            <tr style="text-align: center;">
+              <td><input class="btn" type="button" type="button" value="1"  onclick="display('1')" /></td>
+              <td><input class="btn" type="button" value="2"  onclick="display('2')" /></td>
+              <td><input class="btn" type="button" value="3"  onclick="display('3')" /></td>
+              <td><input class="btn" type="button" value="+"  onclick="display('+')" /></td>
+            </tr>
+            <tr +tyle="text-align: center;">
+              <td><input class="btn" type="button" value="0"  onclick="display('0')" /></td>
+              <td><input class="btn" type="button" value="00"  onclick="display('00')"/></td>
+              <td colspan="2" class="btn-primary ml-3 mt-1" type="button"  value="=" style="height: 100%;width: 175%;" onclick="calculate()">=</td>
+           </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
 
-    <label for="username"><strong>Email</strong><span style="color: red;">*</span></label>
-    <div class="form-row">
-       <div class="form-group col-md-6">
-        <div><input type="text" class="form-control" >
-        <small class="form-text text-muted"></small></div>
-        </div>
-      </div>
-      <label for="username"><strong>Your Experience</strong><span style="color: red;">*</span></label>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" style="color: orange;" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" style="color: orange;" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" style="color: orange;" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" style="color: orange;" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" style="color: orange;" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg>
-    </div>
-  </div>
-  <p>Overall,how would you rate your experience with us?</p> 
-  <div class="table-responsive">
-  <table class="table table-striped" >
-    <label><strong>How satisfied are you with</strong><span style="color: red;">*</span></label>
-    <thead >
-      <tr class="flex-inline m-auto">
-        <th scope="col"></th>
-        <th scope="col" >Very Unsatisfied</th>
-        <th scope="col">Unsatisfied</th>
-        <th scope="col">Neutral</th>
-        <th scope="col">Satisfied</th>
-        <th scope="col">Very Satisfied</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr style="text-align: center;">
-     <th scope="row" >Purchase</th>
-        <td><input type="radio" name="a"></td>
-        <td><input type="radio" name="a"></td>
-        <td><input type="radio" name="a"></td>
-        <td><input type="radio" name="a"></td>
-        <td><input type="radio" name="a"></td>
-    </tr>
-    <tr >
-      <th scope="row">Service</th>
-         <td><input type="radio" name="b"></td>
-         <td><input type="radio" name="b"></td>
-         <td><input type="radio" name="b"></td>
-         <td><input type="radio" name="b"></td>
-         <td><input type="radio" name="b"></td>
-     </tr> 
-     <tr >
-      <th scope="row">Company Overall</th>
-         <td><input type="radio" name="c"></td>
-         <td><input type="radio" name="c"></td>
-         <td><input type="radio" name="c"></td>
-         <td><input type="radio" name="c"></td>
-         <td><input type="radio" name="c"></td>
-     </tr>  
-    </tbody>
-  </table>
-  
-  <table class="table table-striped">
-    <label><strong>How likely are you to</strong><span style="color: red;">*</span></label>
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Very Unsatisfied</th>
-        <th scope="col">Unsatisfied</th>
-        <th scope="col">Neutral</th>
-        <th scope="col">Satisfied</th>
-        <th scope="col">Very Satisfied</th>
-      </tr>
-     </thead>
-    <tbody>
-    <tr >
-     <th scope="row">Buy from us again</th>
-        <td><input type="radio" name="f"></td>
-        <td><input type="radio" name="f"></td>
-        <td><input type="radio" name="f"></td>
-        <td><input type="radio" name="f"></td>
-        <td><input type="radio" name="f"></td>
-    </tr>
-    <tr>
-      <th scope="row">Recommend our<br>product to others</th>
-         <td><input type="radio" name="d"></td>
-         <td><input type="radio" name="d"></td>
-         <td><input type="radio" name="d"></td>
-         <td><input type="radio" name="d"></td>
-         <td><input type="radio" name="d"></td>
-     </tr> 
-     <tr >
-      <th scope="row">Recommend our<br>company to others</th>
-         <td><input type="radio" name="e"></td>
-         <td><input type="radio" name="e"></td>
-         <td><input type="radio" name="e"></td>
-         <td><input type="radio" name="e"></td>
-         <td><input type="radio" name="e"></td>
-     </tr>  
-    </tbody>
-  </table>
-  </div>
-  <label><strong>Additional comments or suggestions</strong></label>
- 
-  <textarea class="d-flex ml-3 col-md-12" rows="5" ></textarea></span></div></div>
-  <br>
-  <input type="submit">
   </body>
+  <script src="script.js"></script>
   </html>
