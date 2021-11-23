@@ -7,52 +7,10 @@
       <link rel="stylesheet" href="bootstrap.min.css">
     
       <link rel="stylesheet" href="style.css">
-      <title>Calculator</title>
+      <title>Countdown</title>
     </head>
-  <body  style="margin: 0.5cm; padding: 1cm;text-align: center;">
-   <div class="table-responsive-sm">
-    <table class="table table-bordered table-active m-auto" style="width: 10cm;border: 2px solid black;">
-          <thead>
-            <tr>
-              <td colspan="4" ><input class="display-box" id="result" placeholder="0"  disabled /></td>
-             
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="text-align: center;">
-              
-              <td><input class="btn" type="button" value="C" style="color: red;" onclick="clearScreen()" /></td>
-              <td><input class="btn" type="button" value="<-"  onclick="back()"/></td>
-              <td><input class="btn" type="button" value="."  onclick="display('.')" /></td>
-              <td><input class="btn" type="button" value="*"  onclick="display('*')" /></td>
-            </tr>
-            <tr style="text-align: center;">
-              <td><input class="btn" type="button" value="7"  onclick="display('7')" /></td>
-              <td><input class="btn" type="button" value="8"  onclick="display('8')" /></td>
-              <td><input class="btn" type="button" value="9"  onclick="display('7')" /></td>
-              <td><input class="btn" type="button" value="/"  onclick="display('/')" /></td>
-            </tr>
-            <tr style="text-align: center;">
-              <td><input class="btn" type="button" value="4"  onclick="display('4')" /></td>
-              <td><input class="btn" type="button" value="5"  onclick="display('5')" /></td>
-              <td><input class="btn" type="button" value="6"  onclick="display('6')" /></td>
-              <td><input class="btn" type="button" value="-"  onclick="display('-')" /></td>
-            </tr>
-            <tr style="text-align: center;">
-              <td><input class="btn" type="button" type="button" value="1"  onclick="display('1')" /></td>
-              <td><input class="btn" type="button" value="2"  onclick="display('2')" /></td>
-              <td><input class="btn" type="button" value="3"  onclick="display('3')" /></td>
-              <td><input class="btn" type="button" value="+"  onclick="display('+')" /></td>
-            </tr>
-            <tr +tyle="text-align: center;">
-              <td><input class="btn" type="button" value="0"  onclick="display('0')" /></td>
-              <td><input class="btn" type="button" value="00"  onclick="display('00')"/></td>
-              <td colspan="2" class="btn-primary ml-3 mt-1" type="button"  value="=" style="height: 100%;width: 175%;" onclick="calculate()">=</td>
-           </tr>
-          </tbody>
-        </table>
-      </div>
-
+    <body>
+      <p id="hp" ></p>
   </body>
   <script src="script.js"></script>
   </html>
