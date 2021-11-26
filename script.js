@@ -1,105 +1,80 @@
-const time= 1000;
+document.addEventListener("DOMContentLoaded",function(){
+    
+  var catcollection = document.getElementById("cat-collection");
+  var catdiv ;
+  const catForm = document.querySelector(".container");
+  let toys ;
 
-let num1 = function(callback){
-    setTimeout(() =>{
-    console.log("10")
-    document.getElementById("hp").innerHTML = "10"
-  callback();
-},1*time)
-}
+  const url = "https://cataas.com/api/cats";
+  
+  function rendercat(toy){
+      catdiv = document.createElement('div');
+      catdiv.className = "card";
+      catdiv.innerHTML = `
+      <h6>Id : ${toy.id}</h6>
+      <h6>Date : ${toy.created_at}</h6>
+      <h6>Tags : ${toy.tags}</h6>
+      <button id=${toy.id}>"https://cataas.com/cat/${toy.id}"</button>
+      <div id=${toy.created_at} class="modal">
+       <div class="modal-content">
+       <span class=${toy.created_at}>&times;</span>
+      <img src ="https://cataas.com/cat/${toy.id}" id="img3"/>
+      </div>
+     </div>
+     <br><br>
+     `
+     catcollection.append(catdiv);
 
+     var modal = document.getElementById(toy.created_at);
+     
+     var span = document.getElementsByClassName(toy.created_at)[0];
 
-let num2 = function(callback){
-    setTimeout(() =>{
-    console.log("9")
-    document.getElementById("hp").innerHTML = "9"
-callback()},1*time)
-}
+     var btn = document.getElementById(toy.id);
 
-let num3 = function(callback){
-    setTimeout(() =>{
-    console.log("8")
-    document.getElementById("hp").innerHTML = "8"
-callback()},1*time)
-}
-let num4 = function(callback){
-    setTimeout(() =>{
-    console.log("7")
-    document.getElementById("hp").innerHTML = "7"
-callback()},1*time)
-}
-let num5 = function(callback){
-    setTimeout(() =>{
-    console.log("6")
-    document.getElementById("hp").innerHTML = "6"
-callback()},1*time)
-}
-let num6 = function(callback){
-    setTimeout(() =>{
-    console.log("5")
-    document.getElementById("hp").innerHTML = "5"
-callback()},1*time)
-}
-let num7 = function(callback){
-    setTimeout(() =>{
-    console.log("4")
-    document.getElementById("hp").innerHTML = "4"
-callback()},1*time)
-}
-let num8 = function(callback){
-    setTimeout(() =>{
-    console.log("3")
-    document.getElementById("hp").innerHTML = "3"
-callback()},1*time)
-}
-let num9 = function(callback){
-    setTimeout(() =>{
-    console.log("2")
-    document.getElementById("hp").innerHTML = "2"
-callback()},1*time)
-}
-let num10 = function(callback){
-    setTimeout(() =>{
-    console.log("1")
-    document.getElementById("hp").innerHTML = "1"
-callback()},1*time)
-}
-let num = function(callback){
-    setTimeout(() =>{
-    console.log("new")
-    document.getElementById("hp").innerHTML = "Happy Independence Day"
-callback()},1*time)
-}
+     btn.onclick = function() {
+         modal.style.display = "block";
+     }
+      
+  
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+      
+  }
+      
 
+      let search = document.getElementById("search-box")
+      search.addEventListener("keyup",function(){
+          let textentered = search.value;
 
-
-
-
-
-
-
-
-     num1(()=>{
-         num2(() => {
-             num3(() => {
-                num4(() => {
-                    num5(() => {
-                        num6(() => {
-                            num7(() => {
-                                num8(() => {
-                                    num9(() => {
-                                        num10(() => {
-                                            num(() => {
-
-                                            })
-                                        })
-                                    })
-                                })
-                            })
-                        })
-                    })
-                })      
-             })
-         })
-     })
+          console.log(textentered);
+          if(textentered != ""){
+              fetchdata("?tags="+textentered);
+          }
+          else{
+              fetchdata(null);
+          }
+          renderAll();
+          document.getElementById("cat-collection").innerHTML = ``;
+      })
+  
+  
  
+
+  function renderAll() {
+      console.log(toys);
+      toys.forEach((toy) => rendercat(toy));
+  }
+  const fetchdata = async (search) =>{
+      try{
+          const response = await fetch(search != null ? url+search : url);
+          const cats = await response.json()
+          .then((gtoys) => toys = gtoys)
+          renderAll(toys);
+      }    catch(err){
+          console.log(err);
+      }
+  }
+ fetchdata(null)
+  
+});
