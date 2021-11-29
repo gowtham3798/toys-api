@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,27 +7,52 @@
       <link rel="stylesheet" href="bootstrap.min.css">
     
       <link rel="stylesheet" href="style.css">
-      <title>DOM Form</title>
+      <title>Calculator</title>
     </head>
   <body>
+     
+   
+   
+    <div id="toy-header">
+      <img
+        src="https://www.indianbarcode.com/images/product/2112.jpg"
+        alt="toy-header"
+      />
+    </div>
+
     <div class="container">
       <form action="" class="add-toy-form">
-        <h2 class="strong">Cats</h2>
-          <img src="http://icons.iconarchive.com/icons/iconcreme/halloween/512/Cat-icon.png" id="img"/>
+        <h3>Create a Toy</h3>
         <input
-          type="search"
-          placeholder="Search"
-          id="search-box"
+          type="text"
+          name="name"
+          value=""
+          placeholder="Enter Toys Name"
+          class="input-text"
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          name="image"
+          value=""
+          placeholder="Enter Toys Image URL"
+          class="input-text"
+        />
+        <br />
+        <br />
+        <input
+          type="submit"
+          name="submit"
+          value="Create New toy"
+          class="submit"
         />
       </form>
     </div>
-    <br><br>
-   
-    <div id="cat-collection"></div>   
-    
-        <script src="script.js"></script>
-  </body>
-  </html>
+    <p id="head">Render Toys <button id="new-toy-btn">Add a New Toy</button></p>
 
-
+    <div id="toy-collection"></div>
   
+  </body>
+  <script src="script3.js"></script>
+  </html>

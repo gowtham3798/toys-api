@@ -1,81 +1,95 @@
-
-
-body {font-family: Arial, Helvetica, sans-serif;}
-
-
-.modal {
-  display: none; /* Hidden by default */
-   position: fixed;
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  max-width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+#toy-header {
+  display: flex;
+  justify-content: center;
+  background: rgb(29, 73, 90);
+  opacity: 0.7;
+  height: 100px;
+  padding: 10px;
 }
 
-/* Modal Content */
-.modal-content {
-  
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  max-width: 70%;
-  max-height: 90%;
+#toy-header img {
+  height: 7rem;
+  width: auto;
 }
 
-#img3{
-    
-    max-width: 100%;
-max-height: auto;
-
+#toy-collection {
+  margin: 3rem;
 }
 
-/* The Close Button */
+.card {
+  justify-content: center;
+  border: 2px solid rgb(131, 129, 129);
+  padding: 10px;
+  width: 20rem;
+  height: 25rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  box-shadow: 0 10px 85px 0 rgba(0, 0, 0, 0.2),
+    0 16px 40px 0 rgba(58, 166, 255, 0.19);
+}
 
+button {
+  display: inline-block;
+  background-color: rgb(29, 73, 90);
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: max-content;
+  color: white;
+  font-size: 16px;
+  justify-content: center;
+}
 
-span:hover,
-span:focus {
-  color: rgba(10, 10, 10, 0.705);
-  text-decoration: none;
+button:hover {
+  background-color: rgb(252, 30, 159);
+  color: white;
   cursor: pointer;
-  
-}  
-
-.container{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    background-color: rgb(134, 94, 146);
-    width: 100%;
-    height: 100%;
-   
-    box-shadow: 0 10px 85px 0 rgba(0, 0, 0, 0.2),
-      0 16px 40px 0 rgba(58, 166, 255, 0.19);
+}
+.container {
+  padding: 1rem;
+  width: stretch;
+  height: auto;
+  display: none;
+  background: rgb(29, 73, 90);
+  opacity: 0.7;
 }
 
-#cat-collection{
-    text-align: center;
-    /* justify-content: center; */
+.add-toy-form {
+  width: 100%;
 }
 
-button{
-    background-color: rgb(184, 174, 174);
-    }
-
-#img{
-    width: 10rem;
-    }
-
-#search-box{
-    width: 15rem;
+.input-text {
+  border-radius: 7px;
+  height: 3rem;
+  width: 50%;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  margin: auto;
 }
 
-h2{
-    padding: 0.5rem;
-    color: rgb(8, 10, 12);
-    size: 5rem;
+.submit {
+  background-color: rgb(255, 38, 190);
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: max-content;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  justify-content: center;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
+
+.toy-avatar {
+  justify-content: center;
+  height: 10rem;
+  width: auto;
+}
+
+#head {
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 600px;
 }
