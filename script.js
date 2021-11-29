@@ -1,80 +1,99 @@
-document.addEventListener("DOMContentLoaded",function(){
-    
-    var catcollection = document.getElementById("cat-collection");
-    var catdiv ;
-    const catForm = document.querySelector(".container");
-    let toys ;
-
-    const url = "https://cataas.com/api/cats";
-    
-    function rendercat(toy){
-        catdiv = document.createElement('div');
-        catdiv.className = "card";
-        catdiv.innerHTML = `
-        <h6>Id : ${toy.id}</h6>
-        <h6>Date : ${toy.created_at}</h6>
-        <h6>Tags : ${toy.tags}</h6>
-        <button id=${toy.id}>"https://cataas.com/cat/${toy.id}"</button>
-        <div id=${toy.created_at} class="modal">
-         <div class="modal-content">
-         <span class=${toy.created_at}>&times;</span>
-        <img src ="https://cataas.com/cat/${toy.id}" id="img3"/>
-        </div>
-       </div>
-       <br><br>
-       `
-       catcollection.append(catdiv);
-
-       var modal = document.getElementById(toy.created_at);
-       
-       var span = document.getElementsByClassName(toy.created_at)[0];
-
-       var btn = document.getElementById(toy.id);
-
-       btn.onclick = function() {
-           modal.style.display = "block";
-       }
-        
-    
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        
+document.addEventListener("DOMContentLoaded", function () {
+    const addBtn = document.querySelector("#new-toy-btn");
+    const toyForm = document.querySelector(".container");
+    const toyCollection = document.getElementById("toy-collection");
+    let addToy = false;
+  
+    const API_URL = "http://localhost:3000/toys";
+  
+    function renderToy(toy) {
+      const toyDiv = document.createElement("div");
+      toyDiv.className = "card";
+      toyDiv.innerHTML = `
+        <h2>${toy.name}</h2>
+        <img src="${toy.image}" class="toy-avatar" />
+        <p>${toy.likes} Likes</p>
+        <button data-id='${toy.id}' class="like-btn">Like <3</button>
+        <button data-id='${toy.id}' class="delete-btn">Delete</button>
+        `;
+  
+      toyCollection.appendChild(toyDiv);
     }
-        
-
-        let search = document.getElementById("search-box")
-        search.addEventListener("keyup",function(){
-            let textentered = search.value;
-
-            console.log(textentered);
-            if(textentered != ""){
-                fetchdata("?tags="+textentered);
-            }
-            else{
-                fetchdata(null);
-            }
-            renderAll();
-            document.getElementById("cat-collection").innerHTML = ``;
+    function renderAll(toys) {
+      toyCollection.innerHTML = "";
+      //all the toys to render inside dom
+      toys.forEach((toy) => renderToy(toy));
+    }
+  
+    fetch(API_URL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (toys) {
+        renderAll(toys);
+      });
+    addBtn.addEventListener("click", function () {
+      addToy = !addToy;
+      if (addToy) {
+        toyForm.style.display = "block";
+      } else {
+        toyForm.style.display = "none";
+      }
+    });
+    toyForm.addEventListener("click", (e) => {
+      let toyName = document.getElementsByClassName("input-text")[0].value;
+      let toyUrl = document.getElementsByClassName("input-text")[1].value;
+  
+      //Lets take data as an object in store it in one variable
+      data = { name: toyName, image: toyUrl, likes: 0 };
+  
+      e.preventDefault();
+  
+      if (e.target.name === "submit") {
+        fetch(`${API_URL}`, {
+          //change the method Get to Post
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          //convert an object data to a json data 
+          body: JSON.stringify(data),
         })
-    
-    
-   
-
-    function renderAll() {
-        console.log(toys);
-        toys.forEach((toy) => rendercat(toy));
-    }
-    const fetchdata = async (search) =>{
-        try{
-            const response = await fetch(search != null ? url+search : url);
-            const cats = await response.json()
-            .then((gtoys) => toys = gtoys)
-            renderAll(toys);
-        }    catch(err){
-            console.log(err);
-        }
-    }
-   fetchdata(null)
-    
-});
+          .then((resp) => resp.json())
+          .then((toy) => renderToy(toy));
+      }
+    });
+  
+    toyCollection.addEventListener("click", (e) => {
+      //check if a button is like or not
+      if (e.target.className === "like-btn") {
+        //We have to increment like by 1
+        let id = parseInt(e.target.dataset.id);
+        let like = parseInt(e.target.previousElementSibling.innerHTML);
+        like++;
+        //update the likes
+        let data = { likes: like };
+        e.target.previousElementSibling.innerText = `${like} likes`;
+  
+        fetch(`${API_URL}/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+      } else if (e.target.className === "delete-btn") {
+        let id = parseInt(e.target.dataset.id);
+        let parent = e.target.parentNode;
+        //to remove the  image from the dom
+        parent.remove();
+  
+        fetch(`${API_URL}/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      }
+    });
+  });
